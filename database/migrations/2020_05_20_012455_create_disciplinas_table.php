@@ -18,9 +18,7 @@ class CreateDisciplinasTable extends Migration
             $table->unsignedInteger('olimpiada_id');
             $table->string("nombre", 250);
             $table->string("descripcion", 250);
-            $table->foreign('olimpiada_id')
-                ->references('id')
-                ->on('olimpiadas');
+            $table->foreign('olimpiada_id')->references('id')->on('olimpiadas');
             $table->timestamps();
         });
     }

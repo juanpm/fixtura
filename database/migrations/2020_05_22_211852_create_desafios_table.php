@@ -16,9 +16,7 @@ class CreateDesafiosTable extends Migration
         Schema::create('desafios', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->unsignedInteger('disciplina_id');
-            $table->foreign('disciplina_id')
-                ->references('id')
-                ->on('disciplinas');
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->string('invitado', 250);
             $table->string('retador', 250);
             $table->integer('puntaje');

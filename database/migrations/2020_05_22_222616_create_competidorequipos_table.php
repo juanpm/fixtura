@@ -16,13 +16,9 @@ class CreateCompetidorequiposTable extends Migration
         Schema::create('competidorequipos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->unsignedInteger('matricula_id');
-            $table->foreign('matricula_id')
-                ->references('id')
-                ->on('matriculas');
             $table->unsignedInteger('equipo_id');
-            $table->foreign('equipo_id')
-                ->references('id')
-                ->on('equipos');
+            $table->foreign('matricula_id')->references('id')->on('matriculas');
+            $table->foreign('equipo_id')->references('id')->on('equipos');
             $table->timestamps();
         });
     }

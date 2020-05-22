@@ -16,13 +16,9 @@ class CreateMatriculasTable extends Migration
         Schema::create('matriculas', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->unsignedInteger('carrera_id');
-            $table->foreign('carrera_id')
-                ->references('id')
-                ->on('carreras');
             $table->unsignedInteger('seccionperiodo_id');
-            $table->foreign('seccionperiodo_id')
-                ->references('id')
-                ->on('seccionperiodos');
+            $table->foreign('carrera_id')->references('id')->on('carreras'); 
+            $table->foreign('seccionperiodo_id')->references('id')->on('seccionperiodos');
             $table->timestamps();
         });
     }

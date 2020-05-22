@@ -18,9 +18,7 @@ class CreateEquiposTable extends Migration
             $table->unsignedInteger('disciplina_id');
             $table->string('nombre', 250);
             $table->string('descripcion', 250);
-            $table->foreign('disciplina_id')
-                ->references('id')
-                ->on('disciplinas');
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->timestamps();
         });
     }
