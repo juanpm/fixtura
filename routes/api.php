@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('olimpiadas', 'OlimpiadaController');
+Route::apiResource('disciplinas', 'DisciplinaController');
+Route::apiResource('equipos', 'EquipoController');
+Route::apiResource('desafios', 'DesafioController');
+Route::apiResource('carreras', 'CarreraController');
+Route::apiResource('seccionperiodos', 'SeccionperiodoController');
+Route::apiResource('personas', 'PersonaController');
+Route::apiResource('matriculas', 'MatriculaController');
+Route::apiResource('competidorequipos', 'CompetidorequipoController');

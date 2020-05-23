@@ -15,6 +15,9 @@ class OlimpiadaController extends Controller
     public function index()
     {
         //
+        $data = Olimpiada::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**
