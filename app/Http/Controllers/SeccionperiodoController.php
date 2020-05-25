@@ -15,6 +15,9 @@ class SeccionperiodoController extends Controller
     public function index()
     {
         //
+        $data = Seccionperiodo::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**

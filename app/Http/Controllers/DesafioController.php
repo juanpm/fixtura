@@ -15,6 +15,9 @@ class DesafioController extends Controller
     public function index()
     {
         //
+        $data = Desafio::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**

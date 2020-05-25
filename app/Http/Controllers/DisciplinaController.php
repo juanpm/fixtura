@@ -15,6 +15,9 @@ class DisciplinaController extends Controller
     public function index()
     {
         //
+        $data = Disciplina::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**

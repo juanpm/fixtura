@@ -15,6 +15,9 @@ class CarreraController extends Controller
     public function index()
     {
         //
+        $data = Carrera::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**

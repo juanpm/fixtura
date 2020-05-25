@@ -15,6 +15,9 @@ class CompetidorequipoController extends Controller
     public function index()
     {
         //
+        $data = Competidorequipo::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**

@@ -15,6 +15,9 @@ class EquipoController extends Controller
     public function index()
     {
         //
+        $data = Equipo::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     /**
