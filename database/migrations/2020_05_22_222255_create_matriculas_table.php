@@ -14,10 +14,10 @@ class CreateMatriculasTable extends Migration
     public function up()
     {
         Schema::create('matriculas', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('carrera_id');
-            $table->unsignedInteger('seccionperiodo_id');
+            $table->increments('id');
+            $table->unsignedInteger('carrera_id')->unsigned();
             $table->foreign('carrera_id')->references('id')->on('carreras'); 
+            $table->unsignedInteger('seccionperiodo_id')->unsigned();
             $table->foreign('seccionperiodo_id')->references('id')->on('seccionperiodos');
             $table->timestamps();
         });

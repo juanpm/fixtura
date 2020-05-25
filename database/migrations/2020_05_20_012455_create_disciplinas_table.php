@@ -14,10 +14,10 @@ class CreateDisciplinasTable extends Migration
     public function up()
     {
         Schema::create('disciplinas', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('olimpiada_id');
+            $table->increments('id');
             $table->string("nombre", 250);
             $table->string("descripcion", 250);
+            $table->integer('olimpiada_id')->unsigned();
             $table->foreign('olimpiada_id')->references('id')->on('olimpiadas');
             $table->timestamps();
         });
