@@ -14,7 +14,7 @@ class CreateSeccionperiodosTable extends Migration
     public function up()
     {
         Schema::create('seccionperiodos', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('nombre', 250);
             $table->timestamps();
         });

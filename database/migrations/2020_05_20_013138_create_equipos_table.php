@@ -14,10 +14,10 @@ class CreateEquiposTable extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('disciplina_id');
+            $table->increments('id');
             $table->string('nombre', 250);
             $table->string('descripcion', 250);
+            $table->integer('disciplina_id')->unsigned();
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->timestamps();
         });

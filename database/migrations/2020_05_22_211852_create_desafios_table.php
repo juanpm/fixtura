@@ -14,8 +14,8 @@ class CreateDesafiosTable extends Migration
     public function up()
     {
         Schema::create('desafios', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('disciplina_id');
+            $table->increments('id');
+            $table->integer('disciplina_id')->unsigned();
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->string('invitado', 250);
             $table->string('retador', 250);
