@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DesafioSeeder::class);
         $this->call(CarreraSeeder::class);
         $this->call(SeccionperiodoSeeder::class);
+        $this->call(MatriculaSeeder::class);
+        $this->call(PersonaSeeder::class);
+        $this->call(CompetidorequipoSeeder::class);
     }
 }
