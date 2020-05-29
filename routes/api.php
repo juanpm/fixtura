@@ -27,3 +27,6 @@ Route::apiResource('seccionperiodos', 'SeccionperiodoController');
 Route::apiResource('personas', 'PersonaController');
 Route::apiResource('matriculas', 'MatriculaController');
 Route::apiResource('competidorequipos', 'CompetidorequipoController');
+/*Route::apiResource('users', 'UserController');*/
+Route::apiResource('rols', 'RolController');
+Route::apiResource('usuariorols', 'UsuariorolController');

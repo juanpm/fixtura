@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->truncateTables([
+            'users'
+        ]);
+
         // $this->call(UserSeeder::class);
         $this->call(OlimpiadaSeeder::class);
         $this->call(DisciplinaSeeder::class);
@@ -21,5 +25,20 @@ class DatabaseSeeder extends Seeder
         $this->call(PersonaSeeder::class);
         $this->call(MatriculaSeeder::class);
         $this->call(CompetidorequipoSeeder::class);
+        $this->call(RolSeeder::class);
+        $this->call(UserSeeder::class);
+        /*$this->call(UsuariorolSeeder::class);*/
+
+    }
+
+    protected function truncateTables(array $tables)
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+
+        foreach ($tables as $table) {
+            DB::table($table)->truncate();
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }
