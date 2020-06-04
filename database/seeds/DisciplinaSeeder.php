@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Disciplina;
+use App\Olimpiada;
 
 class DisciplinaSeeder extends Seeder
 {
@@ -12,19 +13,16 @@ class DisciplinaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("disciplinas")->insert([
+        $olimpiadaId = Olimpiada::where('nombre', 'Copa America Conti')->value('id');
+        Disciplina::create([
             'nombre' => 'Futbol 8',
             'descripcion' => 'Masculino',
-            'olimpiada_id' => '1',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'olimpiada_id' => $olimpiadaId
         ]);
-        DB::table("disciplinas")->insert([
+        Disciplina::create([
             'nombre' => 'Voley',
             'descripcion' => 'Mixto',
-            'olimpiada_id' => '1',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'olimpiada_id' => $olimpiadaId
         ]);
     }
 }

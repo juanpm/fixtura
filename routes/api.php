@@ -30,3 +30,17 @@ Route::apiResource('competidorequipos', 'CompetidorequipoController');
 /*Route::apiResource('users', 'UserController');*/
 Route::apiResource('rols', 'RolController');
 Route::apiResource('usuariorols', 'UsuariorolController');
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});

@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Matricula;
+use App\Persona;
+use App\Carrera;
+use App\Seccionperiodo;
 
 class MatriculaSeeder extends Seeder
 {
@@ -12,19 +15,18 @@ class MatriculaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("matriculas")->insert([
-            'persona_id' => '1',
-            'carrera_id' => '1',
-            'seccionperiodo_id' => '1',
-            'created_at' => '2020-05-25',
-            'updated_at' => '2020-05-25'
+        $personaId = Persona::where('codigo', '1457859')->value('id');
+        $carreraId = Carrera::where('nombre', 'Gastronomia')->value('id');
+        $seccionperiodoId = Seccionperiodo::where('nombre', 'C06AN1-2020-2',)->value('id');
+        Matricula::create([
+            'persona_id' => $personaId,
+            'carrera_id' => $carreraId,
+            'seccionperiodo_id' => $seccionperiodoId
         ]);
-        DB::table("matriculas")->insert([
-            'persona_id' => '1',
-            'carrera_id' => '1',
-            'seccionperiodo_id' => '1',
-            'created_at' => '2020-05-25',
-            'updated_at' => '2020-05-25'
+        Matricula::create([
+            'persona_id' => $personaId,
+            'carrera_id' => $carreraId,
+            'seccionperiodo_id' => $seccionperiodoId
         ]);
     }
 }

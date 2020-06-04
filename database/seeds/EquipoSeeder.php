@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Equipo;
+use App\Disciplina;
 
 class EquipoSeeder extends Seeder
 {
@@ -12,19 +13,16 @@ class EquipoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("equipos")->insert([
+        $disciplinaId = Disciplina::where('nombre', 'Futbol 8')->value('id');
+        Equipo::create([
             'nombre' => 'Los Informaticos',
             'descripcion' => 'Computacion e Informatica',
-            'disciplina_id' => '1',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'disciplina_id' => $disciplinaId
         ]);
-        DB::table("equipos")->insert([
+        Equipo::create([
             'nombre' => 'Los Tigres',
             'descripcion' => 'Gastronomia',
-            'disciplina_id' => '2',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'disciplina_id' => $disciplinaId
         ]);
     }
 }

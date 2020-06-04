@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Olimpiada;
 
 class OlimpiadaSeeder extends Seeder
 {
@@ -12,21 +12,17 @@ class OlimpiadaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("olimpiadas")->insert([
+        Olimpiada::create([
             'nombre' => 'Copa America Conti',
             'descripcion' => 'Vive al maximo',
             'fecha_inicio' => '2019-12-01',
-            'fecha_fin' => '2019-12-03',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'fecha_fin' => '2019-12-03'
         ]);
-        DB::table("olimpiadas")->insert([
+        Olimpiada::create([
             'nombre' => 'Copa Libertadores Conti',
             'descripcion' => 'Descubre tu potencial',
             'fecha_inicio' => '2020-12-01',
-            'fecha_fin' => '2020-12-03',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+            'fecha_fin' => '2020-12-03'
         ]);
     }
 }

@@ -1,8 +1,7 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\User;
 
 class UserSeeder extends Seeder
 {
@@ -12,13 +11,14 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {       
         User::create([
-            'name' => 'Duilio Palacios',
-            'email' => 'duilio@styde.net',
-            'password' => bcrypt('laravel')
+            'name' => 'Jhon',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('123456')
+            /*'password' => Hash::make('123456'),*/
         ]);
 
-        factory(User::class)->times(17)->create();
+        factory(User::class)->create();
     }
 }

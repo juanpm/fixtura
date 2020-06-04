@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Carrera;
 
 class CarreraSeeder extends Seeder
 {
@@ -11,15 +12,11 @@ class CarreraSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("carreras")->insert([
-            'nombre' => 'Gastronomia',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+        Carrera::create([
+            'nombre' => 'Gastronomia'
         ]);
-        DB::table("carreras")->insert([
-            'nombre' => 'Computacion e Informatica',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
+        Carrera::create([
+            'nombre' => 'Computacion e Informatica'
         ]);
     }
 }

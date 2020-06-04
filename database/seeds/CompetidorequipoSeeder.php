@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Competidorequipo;
+use App\Matricula;
+use App\Equipo;
 
 class CompetidorequipoSeeder extends Seeder
 {
@@ -12,17 +14,15 @@ class CompetidorequipoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("competidorequipos")->insert([
-            'matricula_id' => '1',
-            'equipo_id' => '1',
-            'created_at' => '2020-05-25',
-            'updated_at' => '2020-05-25'
+        $matriculaId = Matricula::where('id', '1')->value('id');
+        $equipoId = Equipo::where('nombre', 'Los Informaticos',)->value('id');
+        Competidorequipo::create([
+            'matricula_id' => $matriculaId,
+            'equipo_id' => $equipoId
         ]);
-        DB::table("competidorequipos")->insert([
-            'matricula_id' => '1',
-            'equipo_id' => '1',
-            'created_at' => '2020-05-25',
-            'updated_at' => '2020-05-25'
+        Competidorequipo::create([
+            'matricula_id' => $matriculaId,
+            'equipo_id' => $equipoId
         ]);
     }
 }

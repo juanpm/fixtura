@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Seccionperiodo;
 
 class SeccionperiodoSeeder extends Seeder
 {
@@ -12,15 +12,8 @@ class SeccionperiodoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("seccionperiodos")->insert([
+        Seccionperiodo::create([
             'nombre' => 'C06AN1-2020-2',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
-        ]);
-        DB::table("seccionperiodos")->insert([
-            'nombre' => 'G06AN1-2020-2',
-            'created_at' => '2020/05/23',
-            'updated_at' => '2020/05/23'
         ]);
     }
 }
