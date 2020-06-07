@@ -16,7 +16,7 @@ class CreateOlimpiadasTable extends Migration
         Schema::create('olimpiadas', function (Blueprint $table) {
             $table->increments('id');
             $table->string("nombre", 250)->unique();
-            $table->string("descripcion", 250);
+            $table->string("descripcion", 250)->nullable();
             $table->date("fecha_inicio");
             $table->date("fecha_fin");
             $table->timestamps();

@@ -16,12 +16,12 @@ class EquipoSeeder extends Seeder
         $disciplinaId = Disciplina::where('nombre', 'Futbol 8')->value('id');
         Equipo::create([
             'nombre' => 'Los Informaticos',
-            'descripcion' => 'Computacion e Informatica',
+            'descripcion' => '',
             'disciplina_id' => $disciplinaId
         ]);
         Equipo::create([
             'nombre' => 'Los Tigres',
-            'descripcion' => 'Gastronomia',
+            'descripcion' => '',
             'disciplina_id' => $disciplinaId
         ]);
     }

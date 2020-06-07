@@ -14,13 +14,13 @@ class OlimpiadaSeeder extends Seeder
     {
         Olimpiada::create([
             'nombre' => 'Copa America Conti',
-            'descripcion' => 'Vive al maximo',
+            'descripcion' => '',
             'fecha_inicio' => '2019-12-01',
             'fecha_fin' => '2019-12-03'
         ]);
         Olimpiada::create([
             'nombre' => 'Copa Libertadores Conti',
-            'descripcion' => 'Descubre tu potencial',
+            'descripcion' => '',
             'fecha_inicio' => '2020-12-01',
             'fecha_fin' => '2020-12-03'
         ]);

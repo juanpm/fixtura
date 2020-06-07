@@ -16,12 +16,12 @@ class DisciplinaSeeder extends Seeder
         $olimpiadaId = Olimpiada::where('nombre', 'Copa America Conti')->value('id');
         Disciplina::create([
             'nombre' => 'Futbol 8',
-            'descripcion' => 'Masculino',
+            'descripcion' => '',
             'olimpiada_id' => $olimpiadaId
         ]);
         Disciplina::create([
             'nombre' => 'Voley',
-            'descripcion' => 'Mixto',
+            'descripcion' => '',
             'olimpiada_id' => $olimpiadaId
         ]);
     }
