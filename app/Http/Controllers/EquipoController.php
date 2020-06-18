@@ -16,6 +16,12 @@ class EquipoController extends Controller
     {
         //
         $data = Equipo::all();
+
+        /*$data = Equipo::select('personas.nombre', 'personas.apellido')
+        ->join('competidorequipos', 'equipos.id', '=', 'competidorequipos.id')
+        ->join('matriculas', 'matriculas.id', '=', 'competidorequipos.id')
+        ->join('personas', 'personas.id', '=', 'matriculas.id')
+        ->get();*/
         
         return response()->json(array("status" => true, "objects" => $data));
     }
