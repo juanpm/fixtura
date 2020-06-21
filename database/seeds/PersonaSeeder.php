@@ -22,8 +22,24 @@ class PersonaSeeder extends Seeder
         ]);
         Persona::create([
             'codigo' => '1427163',
-            'nombre' => 'Maria',
+            'nombre' => 'Alberto',
             'apellido' => 'Ambrosio Prado',
+            'dni' => '75458956',
+            'fecha_nacimiento' => '1998-03-01',
+            'telefono' => '929789369'
+        ]);
+        Persona::create([
+            'codigo' => '1417789',
+            'nombre' => 'Marcelo',
+            'apellido' => 'Granados Pino',
+            'dni' => '75458956',
+            'fecha_nacimiento' => '1998-03-01',
+            'telefono' => '929789369'
+        ]);
+        Persona::create([
+            'codigo' => '1821025',
+            'nombre' => 'Luis',
+            'apellido' => 'Paredes Quintanilla',
             'dni' => '75458956',
             'fecha_nacimiento' => '1998-03-01',
             'telefono' => '929789369'

@@ -15,8 +15,8 @@ class CreateDisciplinasTable extends Migration
     {
         Schema::create('disciplinas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("nombre", 250);
-            $table->string("descripcion", 250)->nullable();
+            $table->string("nombre", 250)->unique();
+            $table->integer("participantes")->nullable();
             $table->integer('olimpiada_id')->unsigned();
             $table->foreign('olimpiada_id')->references('id')->on('olimpiadas');
             $table->timestamps();

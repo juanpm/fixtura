@@ -38,6 +38,22 @@ class DisciplinaController extends Controller
      */
     public function store(Request $request)
     {
+        //Aqui se capturan datos
+        $nombre = $request->input("nombre");
+        $participantes = $request->input("participantes");
+        $olimpiada_id = $request->input("olimpiada_id");
+        //Se crea el objeto para la base de datos
+        $disciplina_object = new Disciplina;
+        $disciplina_object->nombre = $nombre;
+        $disciplina_object->participantes = $participantes;
+        $disciplina_object->olimpiada_id = $olimpiada_id;
+        //Se guarda en la base de datos
+        $disciplina_object->save();
+        //Se responde
+        return response()->json([
+            "status" => true,
+            "object" => $disciplina_object
+        ]);
         //
     }
 
@@ -49,7 +65,13 @@ class DisciplinaController extends Controller
      */
     public function show(Disciplina $disciplina)
     {
-        //
+        $data = Disciplina::find($disciplina);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $data[0]
+        ]);
+
     }
 
     /**

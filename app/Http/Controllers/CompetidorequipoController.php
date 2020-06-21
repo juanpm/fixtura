@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Competidorequipo;
+use App\Persona;
+use App\Equipo;
 use Illuminate\Http\Request;
 
 class CompetidorequipoController extends Controller
@@ -47,10 +49,24 @@ class CompetidorequipoController extends Controller
      * @param  \App\Competidorequipo  $competidorequipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Competidorequipo $competidorequipo)
+    public function show($id)
+    {
+        //$equipo_id = Equipo::find($id);
+        $data = Persona::select('personas.nombre', 'personas.apellido')
+        ->from('competidorequipos')
+        ->join('equipos', 'equipos.id', '=', 'competidorequipos.equipo_id')
+        ->join('matriculas', 'matriculas.id', '=', 'competidorequipos.matricula_id')
+        ->join('personas', 'personas.id', '=', 'matriculas.persona_id')
+        ->where('equipos.id', '=', $id)
+        ->get();
+
+        return response()->json(array("status" => true, "objects" => $data));
+    }
+
+    /*public function show(Competidorequipo $competidorequipo)
     {
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.

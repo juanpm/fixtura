@@ -18,6 +18,7 @@ class CreateOlimpiadasTable extends Migration
             $table->string("nombre", 250)->unique();
             $table->string("descripcion", 250)->nullable();
             $table->date("fecha_inicio");
+            $table->date("fecha_fin_inscripcion");
             $table->date("fecha_fin");
             $table->timestamps();
         });

@@ -18,18 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('olimpiadas', 'OlimpiadaController');
-Route::apiResource('disciplinas', 'DisciplinaController');
-Route::apiResource('equipos', 'EquipoController');
-Route::apiResource('desafios', 'DesafioController');
-Route::apiResource('carreras', 'CarreraController');
-Route::apiResource('seccionperiodos', 'SeccionperiodoController');
-Route::apiResource('personas', 'PersonaController');
-Route::apiResource('matriculas', 'MatriculaController');
-Route::apiResource('competidorequipos', 'CompetidorequipoController');
+//Route::apiResource('olimpiadas', 'OlimpiadaController');
+//Route::apiResource('equipos', 'EquipoController');
+//Route::apiResource('desafios', 'DesafioController');
+//Route::apiResource('carreras', 'CarreraController');
+//Route::apiResource('seccionperiodos', 'SeccionperiodoController');
+//Route::apiResource('personas', 'PersonaController');
+//Route::apiResource('matriculas', 'MatriculaController');
+//Route::apiResource('competidorequipos', 'CompetidorequipoController');
 /*Route::apiResource('users', 'UserController');*/
-Route::apiResource('rols', 'RolController');
-Route::apiResource('usuariorols', 'UsuariorolController');
+//Route::apiResource('rols', 'RolController');
+//Route::apiResource('usuariorols', 'UsuariorolController');
 
 Route::group([
 
@@ -43,4 +42,7 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 
+    Route::apiResource('disciplinas', 'DisciplinaController');
+    Route::apiResource('olimpiadas', 'OlimpiadaController');
+    Route::apiResource('competidorequipos', 'CompetidorEquipoController');
 });

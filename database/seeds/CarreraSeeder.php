@@ -13,7 +13,7 @@ class CarreraSeeder extends Seeder
     public function run()
     {
         Carrera::create([
-            'nombre' => 'Gastronomia'
+            'nombre' => 'Gastronomia y Arte Culinario'
         ]);
         Carrera::create([
             'nombre' => 'Computacion e Informatica'
