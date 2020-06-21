@@ -45,4 +45,5 @@ Route::group([
     Route::apiResource('disciplinas', 'DisciplinaController');
     Route::apiResource('olimpiadas', 'OlimpiadaController');
     Route::apiResource('competidorequipos', 'CompetidorequipoController');
+    Route::apiResource('equipos', 'EquipoController');
 });

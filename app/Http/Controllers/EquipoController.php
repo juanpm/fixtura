@@ -16,11 +16,6 @@ class EquipoController extends Controller
     {
         //
         $data = Equipo::all();
-        /*->join('competidorequipos', 'equipos.id', '=', 'competidorequipos.id')
-        ->join('matriculas', 'matriculas.id', '=', 'competidorequipos.id')
-        ->join('personas', 'personas.id', '=', 'matriculas.id')
-        ->where('equipos.id', '=', 1)
-        ->get();*/
         
         return response()->json(array("status" => true, "objects" => $data));
     }
@@ -54,7 +49,12 @@ class EquipoController extends Controller
      */
     public function show(Equipo $equipo)
     {
-        //
+        $data = Equipo::find($equipo);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $data[0]
+        ]);
     }
 
     /**
