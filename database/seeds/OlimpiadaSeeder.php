@@ -24,6 +24,7 @@ class OlimpiadaSeeder extends Seeder
             'descripcion' => 'Descubre tu potencial',
             'fecha_inicio' => '2020-12-01',
             'fecha_fin_inscripcion' => '2020-12-05',
+            'fecha_fin' => '2020-12-08'
         ]);
     }
 }
