@@ -46,4 +46,5 @@ Route::group([
     Route::apiResource('olimpiadas', 'OlimpiadaController');
     Route::apiResource('competidorequipos', 'CompetidorequipoController');
     Route::apiResource('equipos', 'EquipoController');
+    Route::apiResource('personas', 'PersonaController');
 });

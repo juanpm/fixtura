@@ -49,7 +49,12 @@ class PersonaController extends Controller
      */
     public function show(Persona $persona)
     {
-        //
+        $data = Persona::find($persona);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $data[0]
+        ]);
     }
 
     /**

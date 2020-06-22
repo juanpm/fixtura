@@ -21,6 +21,7 @@ class CreatePersonasTable extends Migration
             $table->string('dni', 250);
             $table->date('fecha_nacimiento');
             $table->string('telefono', 250);
+            $table->string('foto', 300)->nullable();
             $table->timestamps();
         });
     }
