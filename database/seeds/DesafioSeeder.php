@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Desafio;
+use App\Disciplina;
+use App\Equipo;
 
 class DesafioSeeder extends Seeder
 {
@@ -12,14 +14,19 @@ class DesafioSeeder extends Seeder
      */
     public function run()
     {
+        $disciplina1 = Disciplina::where('nombre', 'Futbol 8')->value('id');
+        $invitado1 = Equipo::where('nombre', 'Anonymous')->value('id');
+        $retador1 = Equipo::where('nombre', 'Monkycoins')->value('id');
         Desafio::create([
-            'disciplina_id' => '1',
-            'invitado' => 'Los Informaticos',
-            'retador' => 'Los Conta',
-            'puntaje' => '2',
-            'ganador' => 'Los Informaticos',
-            'parent_id' => '1',
-            'fase' => 'Fase 1'
+            'disciplina_id' => $disciplina1,
+            'invitado_id' => $invitado1,
+            'retador_id' => $retador1,
+            'invitado_puntaje' => 1,
+            'retador_puntaje' => 1,
+            'ganador' => '',
+            'parent_id' => 1,
+            'fecha' => new DateTime,
+            'grupo' => 'A',
         ]);
     }
 }

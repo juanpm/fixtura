@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Desafio;
+use App\Equipo;
 use Illuminate\Http\Request;
 
 class DesafioController extends Controller
@@ -38,7 +39,31 @@ class DesafioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $disciplina_id = $request->input("disciplina_id");
+        $invitado_id = $request->input("invitado_id");
+        $retador_id = $request->input("retador_id");
+        $invitado_puntaje = $request->input("invitado_puntaje");
+        $retador_puntaje = $request->input("retador_puntaje");
+        $ganador = $request->input("ganador");
+        $parent_id = $request->input("parent_id");
+        $fecha = $request->input("fecha");
+        $grupo = $request->input("grupo");
+
+        $desafio_object = new Desafio;
+        $desafio_object->disciplina_id = $disciplina_id;
+        $desafio_object->invitado_id = $invitado_id;
+        $desafio_object->retador_id = $retador_id;
+        $desafio_object->invitado_puntaje = $invitado_puntaje;
+        $desafio_object->retador_puntaje = $retador_puntaje;
+        $desafio_object->ganador = $ganador;
+        $desafio_object->parent_id = $parent_id;
+        $desafio_object->fecha = $fecha;
+        $desafio_object->grupo = $grupo;
+
+        return response()->json([
+            "status" => true,
+            "object" => $desafio_object
+        ]);
     }
 
     /**
@@ -49,7 +74,21 @@ class DesafioController extends Controller
      */
     public function show(Desafio $desafio)
     {
-        //
+        $data = Desafio::select('desafios.invitado_id' ,'desafios.retador_id', 
+        'equipos.nombre', 'equipos.image', 'desafios.fecha')
+        ->from('desafios')
+        ->join('equipos', 'equipos.id', '=', 'desafios.invitado_id')
+        ->get();
+
+        $invitadoId = $desafio->invitado_id;
+        $retadorId = $desafio->retador_id;
+
+        $equipo1 = Equipo::find($invitadoId);
+        $equipo2 = Equipo::find($retadorId);
+        return response()->json([
+            "status" => true, 
+            "object" => array($equipo1, $equipo2, $desafio->fecha)
+        ]);
     }
 
     /**

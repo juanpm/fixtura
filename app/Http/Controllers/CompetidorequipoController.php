@@ -52,13 +52,7 @@ class CompetidorequipoController extends Controller
     public function show($id)
     {
         //$equipo_id = Equipo::find($id);
-        $data = Persona::select('personas.id' ,'personas.nombre', 'personas.apellido')
-        ->from('competidorequipos')
-        ->join('equipos', 'equipos.id', '=', 'competidorequipos.equipo_id')
-        ->join('matriculas', 'matriculas.id', '=', 'competidorequipos.matricula_id')
-        ->join('personas', 'personas.id', '=', 'matriculas.persona_id')
-        ->where('equipos.id', '=', $id)
-        ->get();
+        $data = Competidorequipo::all();
 
         return response()->json(array("status" => true, "objects" => $data));
     }

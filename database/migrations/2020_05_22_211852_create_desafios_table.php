@@ -17,12 +17,16 @@ class CreateDesafiosTable extends Migration
             $table->increments('id');
             $table->integer('disciplina_id')->unsigned();
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
-            $table->string('invitado', 250);
-            $table->string('retador', 250);
-            $table->integer('puntaje');
-            $table->string('ganador', 250);
+            $table->integer('invitado_id')->unsigned();
+            $table->foreign('invitado_id')->references('id')->on('equipos');
+            $table->integer('retador_id')->unsigned();
+            $table->foreign('retador_id')->references('id')->on('equipos');
+            $table->integer('invitado_puntaje')->nullable();
+            $table->integer('retador_puntaje')->nullable();
+            $table->string('ganador', 250)->nullable();
             $table->integer('parent_id');
-            $table->string('fase', 250);
+            $table->dateTime('fecha', 0);
+            $table->string('grupo', 250);
             $table->timestamps();
         });
     }

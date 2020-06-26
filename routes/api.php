@@ -47,4 +47,5 @@ Route::group([
     Route::apiResource('competidorequipos', 'CompetidorequipoController');
     Route::apiResource('equipos', 'EquipoController');
     Route::apiResource('personas', 'PersonaController');
+    Route::apiResource('desafios', 'DesafioController');
 });
