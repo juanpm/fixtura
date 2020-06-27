@@ -83,12 +83,16 @@ class DesafioController extends Controller
         $invitadoId = $desafio->invitado_id;
         $retadorId = $desafio->retador_id;
 
-        $equipo1 = Equipo::find($invitadoId);
-        $equipo2 = Equipo::find($retadorId);
-        return response()->json([
-            "status" => true, 
-            "object" => array($equipo1, $equipo2, $desafio->fecha)
-        ]);
+        $retador =  Equipo::find($retadorId);
+        $invitado =  Equipo::find($invitadoId);
+        return response()->json(array(
+            "status" => true,
+            "object" => array(
+              "retador" => $retador,
+              "invitado" => $invitado,
+              "desafio" => $desafio->fecha      
+            )
+        ));
     }
 
     /**
