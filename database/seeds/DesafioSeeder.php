@@ -28,5 +28,16 @@ class DesafioSeeder extends Seeder
             'fecha' => new DateTime,
             'grupo' => 'A',
         ]);
+        Desafio::create([
+            'disciplina_id' => $disciplina1,
+            'invitado_id' => $invitado1,
+            'retador_id' => $retador1,
+            'invitado_puntaje' => 1,
+            'retador_puntaje' => 1,
+            'ganador' => '',
+            'parent_id' => 1,
+            'fecha' => new DateTime,
+            'grupo' => 'B',
+        ]);
     }
 }

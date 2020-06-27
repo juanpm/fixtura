@@ -16,9 +16,18 @@ class DesafioController extends Controller
     public function index()
     {
         //
+        $result = array();
         $data = Desafio::all();
-        
-        return response()->json(array("status" => true, "objects" => $data));
+        foreach ($data as $d) {
+            $retador = Equipo::find($d->retador_id);
+            $invitado = Equipo::find($d->invitado_id);
+            array_push($result, array(
+                "retador" => $retador,
+                "invitado" => $invitado, 
+                "desafio" => $d->fecha                 
+            ));
+        } 
+        return response()->json(array("status" => true, "objects" => $result));
     }
 
     /**
