@@ -14,7 +14,7 @@ class OlimpiadaController extends Controller
      */
     public function index()
     {
-        //
+
         $data = Olimpiada::all();
 
         return response()->json(array("status" => true, "objects" => $data));
@@ -95,11 +95,18 @@ class OlimpiadaController extends Controller
     public function update(Request $request, $id)
     {
         $olympiad = Olimpiada::findOrFail($id);
-        $olympiad->nombre = $request->nombre;
-        $olympiad->descripcion = $request->descripcion;
-        $olympiad->fecha_inicio = $request->fecha_inicio;
-        $olympiad->fecha_fin_inscripcion = $request->fecha_fin_inscripcion;
-        $olympiad->fecha_fin = $request->fecha_fin;
+
+        $nombre = $request->input("nombre");
+        $descripcion = $request->input("descripcion");
+        $fecha_inicio = $request->input("fecha_inicio");
+        $fecha_fin_inscripcion = $request->input("fecha_fin_inscripcion");
+        $fecha_fin = $request->input("fecha_fin");        
+
+        $olympiad->nombre = $nombre;
+        $olympiad->descripcion = $descripcion;
+        $olympiad->fecha_inicio = $fecha_inicio;
+        $olympiad->fecha_fin_inscripcion = $fecha_fin_inscripcion;
+        $olympiad->fecha_fin = $fecha_fin;
         $olympiad->update();
         return $olympiad;
     }

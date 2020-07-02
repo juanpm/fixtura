@@ -18,31 +18,31 @@ class EquipoSeeder extends Seeder
             'nombre' => 'Anonymous',
             'descripcion' => 'El poder del Conocimiento',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/anonymous-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_captain_hero_comic-512.png'
         ]);
         Equipo::create([
             'nombre' => 'Donatoss',
-            'descripcion' => 'Creado Delicias',
+            'descripcion' => 'Creando Delicias',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/tasty-bites-icon-set/512/donuts.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_robin_comic_hero-512.png'
         ]);
         Equipo::create([
             'nombre' => 'Monkycoins',
             'descripcion' => 'Pensando en Grande',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn3.iconfinder.com/data/icons/virus-transmission-color/48/Monkey_Virus-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_batman_hero_comic-512.png'
         ]);
         Equipo::create([
             'nombre' => 'Cuentaseguro',
             'descripcion' => 'Buscamos tu Seguridad',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn3.iconfinder.com/data/icons/finance-152/64/6-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_flash_hero_comic-512.png'
         ]);
         Equipo::create([
             'nombre' => 'Designerstyle',
             'descripcion' => 'Ideas hechas Arte',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn4.iconfinder.com/data/icons/creative-process-16/512/Logo_Design-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_ironman_comic_hero-512.png'
         ]);
     }
 }

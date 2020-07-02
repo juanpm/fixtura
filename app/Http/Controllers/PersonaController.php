@@ -14,7 +14,6 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        //
         $data = Persona::all();
         
         return response()->json(array("status" => true, "objects" => $data));
@@ -38,7 +37,26 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $codigo = $request->input("codigo");
+        $nombre = $request->input("nombre");
+        $apellido = $request->input("apellido");
+        $dni = $request->input("dni");
+        $telefono = $request->input("telefono");
+        $foto = $request->input("foto");
+   
+        $persona_object = new Persona;
+        $persona_object->codigo = $codigo;
+        $persona_object->nombre = $nombre;
+        $persona_object->apellido = $apellido;
+        $persona_object->dni = $dni;
+        $persona_object->telefono = $telefono;
+        $persona_object->foto = $foto;
+        $persona_object->save();
+ 
+        return response()->json([
+            "status" => true,
+            "object" => $persona_object
+        ]);
     }
 
     /**

@@ -20,15 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::apiResource('olimpiadas', 'OlimpiadaController');
 //Route::apiResource('equipos', 'EquipoController');
-//Route::apiResource('desafios', 'DesafioController');
-//Route::apiResource('carreras', 'CarreraController');
-//Route::apiResource('seccionperiodos', 'SeccionperiodoController');
-//Route::apiResource('personas', 'PersonaController');
 //Route::apiResource('matriculas', 'MatriculaController');
 //Route::apiResource('competidorequipos', 'CompetidorequipoController');
-/*Route::apiResource('users', 'UserController');*/
+//Route::apiResource('users', 'UserController');
 //Route::apiResource('rols', 'RolController');
 //Route::apiResource('usuariorols', 'UsuariorolController');
+//Route::apiResource('disciplinas', 'DisciplinaController');
 
 Route::group([
 
@@ -41,11 +38,10 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-
-    Route::apiResource('disciplinas', 'DisciplinaController');
+    
     Route::apiResource('olimpiadas', 'OlimpiadaController');
-    Route::apiResource('competidorequipos', 'CompetidorequipoController');
-    Route::apiResource('equipos', 'EquipoController');
+    Route::apiResource('carreras', 'CarreraController');
+    Route::apiResource('seccionperiodos', 'SeccionperiodoController');
     Route::apiResource('personas', 'PersonaController');
     Route::apiResource('desafios', 'DesafioController');
 });
