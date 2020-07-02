@@ -25,7 +25,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::apiResource('users', 'UserController');
 //Route::apiResource('rols', 'RolController');
 //Route::apiResource('usuariorols', 'UsuariorolController');
-//Route::apiResource('disciplinas', 'DisciplinaController');
 
 Route::group([
 
@@ -46,4 +45,5 @@ Route::group([
     Route::apiResource('desafios', 'DesafioController');
     Route::apiResource('carreras', 'CarreraController');
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
+    Route::apiResource('disciplinas', 'DisciplinaController');
 });

@@ -83,25 +83,7 @@ class DesafioController extends Controller
      */
     public function show(Desafio $desafio)
     {
-        $data = Desafio::select('desafios.invitado_id' ,'desafios.retador_id', 
-        'equipos.nombre', 'equipos.image', 'desafios.fecha')
-        ->from('desafios')
-        ->join('equipos', 'equipos.id', '=', 'desafios.invitado_id')
-        ->get();
 
-        $invitadoId = $desafio->invitado_id;
-        $retadorId = $desafio->retador_id;
-
-        $retador =  Equipo::find($retadorId);
-        $invitado =  Equipo::find($invitadoId);
-        return response()->json(array(
-            "status" => true,
-            "object" => array(
-              "retador" => $retador,
-              "invitado" => $invitado,
-              "desafio" => $desafio->fecha      
-            )
-        ));
     }
 
     /**

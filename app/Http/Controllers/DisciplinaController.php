@@ -73,18 +73,6 @@ class DisciplinaController extends Controller
      */
     public function show(Disciplina $disciplina)
     {
-        $data = Disciplina::select('equipos.nombre' ,'personas.nombre' ,'personas.apellido', 'personas.foto')
-        ->from('personas')
-        ->join('matriculas', 'personas.id', '=', 'matriculas.persona_id')
-        ->join('competidorequipos', 'matriculas.id', '=', 'competidorequipos.matricula_id')
-        ->join('equipos', 'equipos.id', '=', 'competidorequipos.equipo_id')
-        ->where('disciplina_id', $disciplina->id)
-        ->get();    
-        
-        return response()->json([
-            "status" => true, 
-            "object" => array($data)
-        ]);
 
     }
 
