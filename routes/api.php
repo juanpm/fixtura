@@ -44,4 +44,6 @@ Route::group([
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
     Route::apiResource('personas', 'PersonaController');
     Route::apiResource('desafios', 'DesafioController');
+    Route::apiResource('carreras', 'CarreraController');
+    Route::apiResource('seccionperiodos', 'SeccionperiodoController');
 });

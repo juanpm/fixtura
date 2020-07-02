@@ -38,7 +38,16 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nombre = $request->input("nombre");
+   
+        $carrera_object = new Carrera;
+        $carrera_object->nombre = $nombre;
+        $carrera_object->save();
+ 
+        return response()->json([
+            "status" => true,
+            "object" => $carrera_object
+        ]);
     }
 
     /**
@@ -49,7 +58,12 @@ class CarreraController extends Controller
      */
     public function show(Carrera $carrera)
     {
-        //
+        $data = Carrera::find($carrera);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $data[0]
+        ]);
     }
 
     /**
@@ -70,9 +84,16 @@ class CarreraController extends Controller
      * @param  \App\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carrera $carrera)
+    public function update(Request $request, $id)
     {
-        //
+        $carrera = Carrera::findOrFail($id);
+
+        $nombre = $request->input("nombre");        
+
+        $carrera->nombre = $nombre;
+        
+        $carrera->update();
+        return $carrera;
     }
 
     /**
