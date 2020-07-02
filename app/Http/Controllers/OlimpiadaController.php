@@ -108,7 +108,11 @@ class OlimpiadaController extends Controller
         $olympiad->fecha_fin_inscripcion = $fecha_fin_inscripcion;
         $olympiad->fecha_fin = $fecha_fin;
         $olympiad->update();
-        return $olympiad;
+
+        return response()->json([
+            "status" => true,
+            "object" => $olympiad
+        ]);
     }
 
     /**

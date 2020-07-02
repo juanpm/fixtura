@@ -93,9 +93,29 @@ class PersonaController extends Controller
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request, $id)
     {
-        //
+        $person = Persona::findOrFail($id);
+
+        $codigo = $request->input("codigo");
+        $nombre = $request->input("nombre");
+        $apellido = $request->input("apellido");
+        $dni = $request->input("dni");
+        $telefono = $request->input("telefono");
+        $foto = $request->input("foto");     
+
+        $person->codigo = $codigo;
+        $person->nombre = $nombre;
+        $person->apellido = $apellido;
+        $person->dni = $dni;
+        $person->telefono = $telefono;
+        $person->foto = $foto;
+        $person->update();
+
+        return response()->json([
+            "status" => true,
+            "object" => $person
+        ]);
     }
 
     /**
