@@ -38,7 +38,16 @@ class SeccionperiodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nombre = $request->input("nombre");
+   
+        $seccion_object = new Seccionperiodo;
+        $seccion_object->nombre = $nombre;
+        $seccion_object->save();
+ 
+        return response()->json([
+            "status" => true,
+            "object" => $seccion_object
+        ]);
     }
 
     /**
@@ -49,7 +58,12 @@ class SeccionperiodoController extends Controller
      */
     public function show(Seccionperiodo $seccionperiodo)
     {
-        //
+        $data = Seccionperiodo::find($seccionperiodo);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $data[0]
+        ]);
     }
 
     /**
@@ -70,9 +84,16 @@ class SeccionperiodoController extends Controller
      * @param  \App\Seccionperiodo  $seccionperiodo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seccionperiodo $seccionperiodo)
+    public function update(Request $request, $id)
     {
-        //
+        $seccionperiodo = Seccionperiodo::findOrFail($id);
+
+        $nombre = $request->input("nombre");        
+
+        $seccionperiodo->nombre = $nombre;
+        
+        $seccionperiodo->update();
+        return $seccionperiodo;
     }
 
     /**
