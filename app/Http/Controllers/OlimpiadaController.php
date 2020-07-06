@@ -92,27 +92,17 @@ class OlimpiadaController extends Controller
      * @param  \App\Olimpiada  $olimpiada
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Olimpiada $olimpiada)
     {
-        $olympiad = Olimpiada::findOrFail($id);
-
-        $nombre = $request->input("nombre");
-        $descripcion = $request->input("descripcion");
-        $fecha_inicio = $request->input("fecha_inicio");
-        $fecha_fin_inscripcion = $request->input("fecha_fin_inscripcion");
-        $fecha_fin = $request->input("fecha_fin");        
-
-        $olympiad->nombre = $nombre;
-        $olympiad->descripcion = $descripcion;
-        $olympiad->fecha_inicio = $fecha_inicio;
-        $olympiad->fecha_fin_inscripcion = $fecha_fin_inscripcion;
-        $olympiad->fecha_fin = $fecha_fin;
-        $olympiad->update();
-
-        return response()->json([
-            "status" => true,
-            "object" => $olympiad
-        ]);
+        //
+        $olimpiada->nombre = $request->input("nombre");
+        $olimpiada->descripcion = $request->input("descripcion");
+        $olimpiada->fecha_inicio = $request->input("fecha_inicio");
+        $olimpiada->fecha_fin_inscripcion = $request->input("fecha_fin_inscripcion");
+        $olimpiada->fecha_fin = $request->input("fecha_fin");
+        $olimpiada->update();
+        return response()->json(array("status" => true,
+            "objects" => $olimpiada));
     }
 
     /**
@@ -121,9 +111,9 @@ class OlimpiadaController extends Controller
      * @param  \App\Olimpiada  $olimpiada
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Olimpiada $olimpiada)
     {
-        $olympiad = Olimpiada::findOrFail($id);
-        $olympiad->delete();
+        //
+        $olimpiada->delete();
     }
 }

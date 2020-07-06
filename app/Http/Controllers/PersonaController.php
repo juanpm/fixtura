@@ -93,29 +93,18 @@ class PersonaController extends Controller
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Persona $persona)
     {
-        $person = Persona::findOrFail($id);
-
-        $codigo = $request->input("codigo");
-        $nombre = $request->input("nombre");
-        $apellido = $request->input("apellido");
-        $dni = $request->input("dni");
-        $telefono = $request->input("telefono");
-        $foto = $request->input("foto");     
-
-        $person->codigo = $codigo;
-        $person->nombre = $nombre;
-        $person->apellido = $apellido;
-        $person->dni = $dni;
-        $person->telefono = $telefono;
-        $person->foto = $foto;
-        $person->update();
-
-        return response()->json([
-            "status" => true,
-            "object" => $person
-        ]);
+        //
+        $persona->codigo = $request->input("codigo");
+        $persona->nombre = $request->input("nombre");
+        $persona->apellido = $request->input("apellido");
+        $persona->dni = $request->input("dni");
+        $persona->telefono = $request->input("telefono");
+        $persona->foto = $request->input("foto");
+        $persona->update();
+        return response()->json(array("status" => true,
+            "objects" => $persona));
     }
 
     /**
@@ -127,5 +116,6 @@ class PersonaController extends Controller
     public function destroy(Persona $persona)
     {
         //
+        $persona->delete();
     }
 }
