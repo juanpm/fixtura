@@ -86,14 +86,10 @@ class SeccionperiodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $seccionperiodo = Seccionperiodo::findOrFail($id);
-
-        $nombre = $request->input("nombre");        
-
-        $seccionperiodo->nombre = $nombre;
-        
+        $seccionperiodo->nombre = $request->input("nombre");
         $seccionperiodo->update();
-        return $seccionperiodo;
+        return response()->json(array("status" => true,
+        "object" =>$seccionperiodo));
     }
 
     /**
@@ -105,5 +101,6 @@ class SeccionperiodoController extends Controller
     public function destroy(Seccionperiodo $seccionperiodo)
     {
         //
+        $seccionperiodo->delete();
     }
 }

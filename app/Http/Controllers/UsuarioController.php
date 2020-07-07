@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Usuariorol;
 use Illuminate\Http\Request;
 
-class UsuariorolController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class UsuariorolController extends Controller
     public function index()
     {
         //
-        $data = Usuariorol::all();
-
-        return response()->json(array("status" => true, "objects" => $data));
+        return response()->json(
+            array("status" => true, "objects" => User::all())
+        );
     }
 
     /**
@@ -39,34 +39,51 @@ class UsuariorolController extends Controller
     public function store(Request $request)
     {
         //
-        $usuariorol_object = new Usuariorol;
-        $usuariorol_object->rol_id = $request->input("rol_id");
-        $usuariorol_object->user_id = $request->input("user_id");
-        $usuariorol_object->save();
+        $user_object = new User;
+        $user_object->name = $request->input("name");
+        $user_object->email = $request->input("email");
+        $user_object->password = bcrypt('password');
+        $user_object->save();
         
         return response()->json(
-            array("status" => true, "object" => $usuariorol_object)
+            array("status" => true, "object" => $user_object)
         );
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Usuariorol  $usuariorol
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuariorol $usuariorol)
+    public function show($id)
     {
         //
+        Log::channel('stderr')->info('test >'.$id);
+        $u = User::find($id);
+
+        $usuarioroles = Usuariorol::where("user_id", $u->id)->get();
+
+        $usuarioroles_data = array();
+
+        foreach($usuarioroles as $rol) {
+            array_push($usuarioroles_data, Rol::find($rol->rol_id));
+        }
+
+        $data = array("user" => $u, "rols" => $usuarioroles_data);
+
+        return response()->json(
+            array("status" => true, "object" => $data)
+        );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Usuariorol  $usuariorol
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuariorol $usuariorol)
+    public function edit(Usuario $usuario)
     {
         //
     }
@@ -75,10 +92,10 @@ class UsuariorolController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Usuariorol  $usuariorol
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuariorol $usuariorol)
+    public function update(Request $request, Usuario $usuario)
     {
         //
     }
@@ -86,10 +103,10 @@ class UsuariorolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Usuariorol  $usuariorol
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuariorol $usuariorol)
+    public function destroy(Usuario $usuario)
     {
         //
     }

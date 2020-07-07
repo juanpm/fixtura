@@ -84,16 +84,12 @@ class CarreraController extends Controller
      * @param  \App\Carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Carrera $carrera)
     {
-        $carrera = Carrera::findOrFail($id);
-
-        $nombre = $request->input("nombre");        
-
-        $carrera->nombre = $nombre;
-        
+        $carrera->nombre = $request->input("nombre");
         $carrera->update();
-        return $carrera;
+        return response()->json(array("status" => true,
+        "object" =>$carrera));
     }
 
     /**
@@ -105,5 +101,6 @@ class CarreraController extends Controller
     public function destroy(Carrera $carrera)
     {
         //
+        $carrera->delete();
     }
 }

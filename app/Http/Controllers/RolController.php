@@ -38,7 +38,12 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rol_object = new Rol;
+        $rol_object->nombre = $request->input("nombre");
+        $rol_object->save();
+        return response()->json(
+            array("status" => true, "object" => $rol_object)
+        );
     }
 
     /**
