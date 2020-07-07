@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
+use App\Disciplina;
 use Illuminate\Http\Request;
 
 class EquipoController extends Controller
@@ -15,7 +16,15 @@ class EquipoController extends Controller
     public function index()
     {
         //
+        //$result = array();
         $data = Equipo::all();
+        /*foreach ($data as $d) {
+            $disciplina = Disciplina::find($d->disciplina_id);
+            array_push($result, array(
+                "disciplina" => $disciplina, 
+                "equipo" => $d             
+            ));
+        }*/
         
         return response()->json(array("status" => true, "objects" => $data));
     }

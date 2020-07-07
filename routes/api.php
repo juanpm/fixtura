@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Route::apiResource('olimpiadas', 'OlimpiadaController');
-//Route::apiResource('equipos', 'EquipoController');
 //Route::apiResource('matriculas', 'MatriculaController');
 //Route::apiResource('competidorequipos', 'CompetidorequipoController');
 //Route::apiResource('users', 'UserController');
@@ -41,9 +40,11 @@ Route::group([
     Route::apiResource('olimpiadas', 'OlimpiadaController');
     Route::apiResource('carreras', 'CarreraController');
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
+    Route::get('personas/android', 'PersonaController@index_android');
     Route::apiResource('personas', 'PersonaController');
     Route::apiResource('desafios', 'DesafioController');
     Route::apiResource('carreras', 'CarreraController');
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
     Route::apiResource('disciplinas', 'DisciplinaController');
+    Route::apiResource('equipos', 'EquipoController');
 });

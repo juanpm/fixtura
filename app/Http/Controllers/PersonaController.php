@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Persona;
+use App\Equipo;
+use App\Matricula;
+use App\Competidorequipo;
 use Illuminate\Http\Request;
 
 class PersonaController extends Controller
@@ -14,6 +17,25 @@ class PersonaController extends Controller
      */
     public function index()
     {
+        $result = array();
+
+        //$ce = Competidorequipo::all();
+        $team = Equipo::all();
+        foreach ($team as $t) {
+            $tmp = array("equipo" => $t, "personas" => array());
+            foreach(Competidorequipo::where("equipo_id", $t->id)->get() as $x) {
+                $p = Persona::find(Matricula::find($x->matricula_id)->persona_id);
+                array_push($tmp["personas"], $p);
+            }
+            array_push($result, $tmp);
+        } 
+        
+        return response()->json(array("status" => true, "objects" => $result));
+    }
+
+    public function index_android()
+    {
+        //
         $data = Persona::all();
         
         return response()->json(array("status" => true, "objects" => $data));
