@@ -17,7 +17,7 @@ class DisciplinaSeeder extends Seeder
         Disciplina::create([
             'nombre' => 'Futbol 8',
             'participantes' => 16,
-            'olimpiada_id' => $olimpiadaId
+            'olimpiada_id' => $olimpiadaId,
         ]);
         Disciplina::create([
             'nombre' => 'Voley',

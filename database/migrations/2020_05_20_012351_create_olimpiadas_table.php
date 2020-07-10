@@ -20,6 +20,7 @@ class CreateOlimpiadasTable extends Migration
             $table->date("fecha_inicio");
             $table->date("fecha_fin_inscripcion");
             $table->date("fecha_fin");
+            $table->boolean("visible");
             $table->timestamps();
         });
     }

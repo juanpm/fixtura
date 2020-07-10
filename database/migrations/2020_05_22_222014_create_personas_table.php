@@ -22,6 +22,8 @@ class CreatePersonasTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('telefono', 250);
             $table->string('foto', 300)->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');            
             $table->timestamps();
         });
     }
