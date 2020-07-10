@@ -50,4 +50,5 @@ Route::group([
     Route::apiResource('users', 'UsuarioController');
     Route::apiResource('rols', 'RolController');
     Route::apiResource('usuariorols', 'UsuariorolController');
+    Route::apiResource('matriculas', 'MatriculaController');
 });

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuariorol;
 use Illuminate\Http\Request;
+use App\Usuariorol; 
+use App\User;
+use App\Rol;  
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
