@@ -15,7 +15,7 @@ class OlimpiadaController extends Controller
     public function index()
     {
 
-        $data = Olimpiada::all();
+        $data = Olimpiada::where("visible", true)->get();
 
         return response()->json(array("status" => true, "objects" => $data));
     }
@@ -50,6 +50,7 @@ class OlimpiadaController extends Controller
         $olimpiada_object->fecha_inicio = $fecha_inicio;
         $olimpiada_object->fecha_fin_inscripcion = $fecha_fin_inscripcion;
         $olimpiada_object->fecha_fin = $fecha_fin;
+        $olimpiada_object->visible = true;
         $olimpiada_object->save();
  
         return response()->json([
@@ -114,6 +115,8 @@ class OlimpiadaController extends Controller
     public function destroy(Olimpiada $olimpiada)
     {
         //
-        $olimpiada->delete();
+//        $olimpiada->delete();
+        $olimpiada->visible = false;
+        $olimpiada->update();
     }
 }

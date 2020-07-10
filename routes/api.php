@@ -47,4 +47,7 @@ Route::group([
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
     Route::apiResource('disciplinas', 'DisciplinaController');
     Route::apiResource('equipos', 'EquipoController');
+    Route::apiResource('users', 'UsuarioController');
+    Route::apiResource('rols', 'RolController');
+    Route::apiResource('usuariorols', 'UsuariorolController');
 });
