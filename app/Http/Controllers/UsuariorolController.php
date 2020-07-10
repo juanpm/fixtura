@@ -92,5 +92,6 @@ class UsuariorolController extends Controller
     public function destroy(Usuariorol $usuariorol)
     {
         //
+        $usuariorol->delete();
     }
 }
