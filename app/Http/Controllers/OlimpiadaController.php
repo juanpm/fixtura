@@ -67,7 +67,8 @@ class OlimpiadaController extends Controller
      */
     public function show(Olimpiada $olimpiada)
     {
-        $data = Olimpiada::find($olimpiada);
+        $data = Olimpiada::find($olimpiada)
+        /*->where("visible", true)*/;
         
         return response()->json([
             "status" => true, 
