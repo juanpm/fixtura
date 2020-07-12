@@ -67,15 +67,14 @@ class OlimpiadaController extends Controller
      */
     public function show(Olimpiada $olimpiada)
     {
-        $data = Olimpiada::find($olimpiada)
-        /*->where("visible", true)*/;
+        $data = Olimpiada::find($olimpiada);
         
         return response()->json([
             "status" => true, 
             "object" => $data[0]
         ]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

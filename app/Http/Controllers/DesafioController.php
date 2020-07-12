@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Desafio;
 use App\Equipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DesafioController extends Controller
 {
@@ -15,9 +16,24 @@ class DesafioController extends Controller
      */
     public function index()
     {
+        if ( isset($_GET["keyword"]) ) {
+            Log::channel('stderr')->info('test 1x'.$_GET["keyword"]);
+            $ids = array();
+            $equipos = Equipo::where('nombre', $_GET["keyword"])
+                ->orWhere('nombre', 'like', '%' . $_GET["keyword"] . '%')->get();
+            foreach($equipos as $equipo) {
+                array_push($ids, $equipo->id);
+            }
+            Log::channel('stderr')->info('test 2x'.count($equipos));
+            $data = Desafio::whereIn('retador_id', $ids)
+                ->orWhere('invitado_id', $ids)->get();
+        } else {
+            $data = Desafio::all();    
+        }
         //
+        
         $result = array();
-        $data = Desafio::all();
+        
         foreach ($data as $d) {
             $retador = Equipo::find($d->retador_id);
             $invitado = Equipo::find($d->invitado_id);
