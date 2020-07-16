@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Desafio;
 use App\Equipo;
+use App\Disciplina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

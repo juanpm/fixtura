@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Competidorequipo;
-use App\Persona;
+use App\Matricula;
 use App\Equipo;
+use App\Persona;
 use Illuminate\Http\Request;
 
 class CompetidorequipoController extends Controller

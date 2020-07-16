@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Matricula;
+use App\Persona;
+use App\Seccionperiodo;
+use App\Carrera;
 use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
