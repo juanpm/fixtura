@@ -17,9 +17,19 @@ class CompetidorequipoController extends Controller
     public function index()
     {
         //
-        $data = Competidorequipo::all();
+        $data = Competidorequipo::where("visible", true)->get();
+        $compilado = array();
+        foreach($data as $item) {
+            $xrow = array(
+                "id" => $item->id,
+                "matricula" => Matricula::find($item->matricula_id),
+                "persona" => Matricula::find($item->persona_id),
+                "equipo" => Equipo::find($item->equipo_id)
+            );
+            array_push($compilado, $xrow);
+        }
         
-        return response()->json(array("status" => true, "objects" => $data));
+        return response()->json(array("status" => true, "objects" => $compilado));
     }
 
     /**
@@ -41,6 +51,19 @@ class CompetidorequipoController extends Controller
     public function store(Request $request)
     {
         //
+        $matricula_id = $request->input("matricula_id");
+        $equipo_id = $request->input("equipo_id");
+   
+        $competidorequipo_object = new Competidorequipo;
+        $competidorequipo_object->matricula_id = $matricula_id;
+        $competidorequipo_object->equipo_id = $equipo_id;
+        $competidorequipo_object->visible = true;
+        $competidorequipo_object->save();
+ 
+        return response()->json([
+            "status" => true,
+            "object" => $competidorequipo_object
+        ]);
     }
 
     /**
@@ -51,10 +74,13 @@ class CompetidorequipoController extends Controller
      */
     public function show($id)
     {
-        //$equipo_id = Equipo::find($id);
-        $data = Competidorequipo::all();
+       //$equipo_id = Equipo::find($id);
+        //$data = Competidorequipo::all();
 
-        return response()->json(array("status" => true, "objects" => $data));
+        return response()->json([
+            "status" => true, 
+            "object" => $competidorequipo
+        ]);
     }
 
     /*public function show(Competidorequipo $competidorequipo)
@@ -83,6 +109,13 @@ class CompetidorequipoController extends Controller
     public function update(Request $request, Competidorequipo $competidorequipo)
     {
         //
+        $competidorequipo->matricula_id = $request->input("matricula_id");
+        //$matricula->persona_id = $request->input("persona_id");
+        $competidorequipo->equipo_id = $request->input("equipo_id");
+        //$competidorequipo->visible = $request->true;
+        $competidorequipo->update();
+        return response()->json(array("status" => true,
+        "object" =>$competidorequipo));
     }
 
     /**
@@ -93,6 +126,7 @@ class CompetidorequipoController extends Controller
      */
     public function destroy(Competidorequipo $competidorequipo)
     {
-        //
+        $competidorequipo->visible = false;
+        $competidorequipo->update();
     }
 }

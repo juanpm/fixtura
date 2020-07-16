@@ -15,9 +15,19 @@ class MatriculaController extends Controller
     public function index()
     {
         //
-        $data = Matricula::all();
+        $data = Matricula::where("visible", true)->get();
+        $compilado = array();
+        foreach($data as $item) {
+            $xrow = array(
+                "id" => $item->id,
+                "persona" => Persona::find($item->persona_id),
+                "carrera" => Carrera::find($item->carrera_id),
+                "seccionperiodo" => Seccionperiodo::find($item->seccionperiodo_id)
+            );
+            array_push($compilado, $xrow);
+        }
         
-        return response()->json(array("status" => true, "objects" => $data));
+        return response()->json(array("status" => true, "objects" => $compilado));
     }
 
     /**
@@ -39,6 +49,21 @@ class MatriculaController extends Controller
     public function store(Request $request)
     {
         //
+        $carrera_id = $request->input("carrera_id");
+        $persona_id = $request->input("persona_id");
+        $seccionperiodo_id = $request->input("seccionperiodo_id");
+   
+        $matricula_object = new Matricula;
+        $matricula_object->carrera_id = $carrera_id;
+        $matricula_object->persona_id = $persona_id;
+        $matricula_object->seccionperiodo_id = $seccionperiodo_id;
+        $matricula_object->visible = true;
+        $matricula_object->save();
+ 
+        return response()->json([
+            "status" => true,
+            "object" => $matricula_object
+        ]);
     }
 
     /**
@@ -49,7 +74,12 @@ class MatriculaController extends Controller
      */
     public function show(Matricula $matricula)
     {
-        //
+        //$data = Matricula::find($matricula);
+        
+        return response()->json([
+            "status" => true, 
+            "object" => $matricula
+        ]);
     }
 
     /**
@@ -73,6 +103,13 @@ class MatriculaController extends Controller
     public function update(Request $request, Matricula $matricula)
     {
         //
+        $matricula->carrera_id = $request->input("carrera_id");
+        //$matricula->persona_id = $request->input("persona_id");
+        $matricula->seccionperiodo_id = $request->input("seccionperiodo_id");
+        //$matricula->visible = $request->true;
+        $matricula->update();
+        return response()->json(array("status" => true,
+        "object" =>$matricula));
     }
 
     /**
@@ -84,5 +121,7 @@ class MatriculaController extends Controller
     public function destroy(Matricula $matricula)
     {
         //
+        $matricula->visible = false;
+        $matricula->update();
     }
 }

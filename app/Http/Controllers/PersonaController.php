@@ -17,7 +17,7 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        $result = array();
+        /*$result = array();
 
         //$ce = Competidorequipo::all();
         $team = Equipo::all();
@@ -30,7 +30,10 @@ class PersonaController extends Controller
             array_push($result, $tmp);
         } 
         
-        return response()->json(array("status" => true, "objects" => $result));
+        return response()->json(array("status" => true, "objects" => $result));*/
+        $data = Persona::all();
+        
+        return response()->json(array("status" => true, "objects" => $data));
     }
 
     public function index_android()
@@ -60,19 +63,21 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         $codigo = $request->input("codigo");
-        $nombre = $request->input("nombre");
-        $apellido = $request->input("apellido");
+        $nombrecompleto = $request->input("nombrecompleto");
         $dni = $request->input("dni");
+        $fecha_nacimiento = $request->input("fecha_nacimiento");
         $telefono = $request->input("telefono");
         $foto = $request->input("foto");
+        $user_id = $request->input("user_id");
    
         $persona_object = new Persona;
         $persona_object->codigo = $codigo;
-        $persona_object->nombre = $nombre;
-        $persona_object->apellido = $apellido;
+        $persona_object->nombrecompleto = $nombrecompleto;
         $persona_object->dni = $dni;
+        $persona_object->fecha_nacimiento = $fecha_nacimiento;
         $persona_object->telefono = $telefono;
         $persona_object->foto = $foto;
+        $persona_object->user_id = $user_id;
         $persona_object->save();
  
         return response()->json([
@@ -89,11 +94,11 @@ class PersonaController extends Controller
      */
     public function show(Persona $persona)
     {
-        $data = Persona::find($persona);
+        //$data = Persona::find($persona);
         
         return response()->json([
             "status" => true, 
-            "object" => $data[0]
+            "object" => $persona
         ]);
     }
 
@@ -119,11 +124,12 @@ class PersonaController extends Controller
     {
         //
         $persona->codigo = $request->input("codigo");
-        $persona->nombre = $request->input("nombre");
-        $persona->apellido = $request->input("apellido");
+        $persona->nombrecompleto = $request->input("nombrecompleto");
         $persona->dni = $request->input("dni");
+        $persona->fecha_nacimiento = $request->input("fecha_nacimiento");
         $persona->telefono = $request->input("telefono");
         $persona->foto = $request->input("foto");
+        $persona->user_id = $request->input("user_id");
         $persona->update();
         return response()->json(array("status" => true,
             "objects" => $persona));

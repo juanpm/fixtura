@@ -19,6 +19,7 @@ class CreateDisciplinasTable extends Migration
             $table->integer("participantes")->nullable();
             $table->integer('olimpiada_id')->unsigned();
             $table->foreign('olimpiada_id')->references('id')->on('olimpiadas');
+            $table->boolean("visible");
             $table->timestamps();
         });
     }

@@ -24,22 +24,26 @@ class MatriculaSeeder extends Seeder
         Matricula::create([
             'persona_id' => $personaId1,
             'carrera_id' => $carreraId,
-            'seccionperiodo_id' => $seccionperiodoId
+            'seccionperiodo_id' => $seccionperiodoId,
+            'visible' => true
         ]);
         Matricula::create([
             'persona_id' => $personaId2,
             'carrera_id' => $carreraId,
-            'seccionperiodo_id' => $seccionperiodoId
+            'seccionperiodo_id' => $seccionperiodoId,
+            'visible' => true
         ]);
         Matricula::create([
             'persona_id' => $personaId3,
             'carrera_id' => $carreraId,
-            'seccionperiodo_id' => $seccionperiodoId
+            'seccionperiodo_id' => $seccionperiodoId,
+            'visible' => true
         ]);
         Matricula::create([
             'persona_id' => $personaId4,
             'carrera_id' => $carreraId,
-            'seccionperiodo_id' => $seccionperiodoId
+            'seccionperiodo_id' => $seccionperiodoId,
+            'visible' => true
         ]);
     }
 }

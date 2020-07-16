@@ -18,31 +18,36 @@ class EquipoSeeder extends Seeder
             'nombre' => 'Anonymous',
             'descripcion' => 'El poder del Conocimiento',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_captain_hero_comic-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_captain_hero_comic-512.png',
+            'visible' => true
         ]);
         Equipo::create([
             'nombre' => 'Donatoss',
             'descripcion' => 'Creando Delicias',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_robin_comic_hero-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_robin_comic_hero-512.png',
+            'visible' => true
         ]);
         Equipo::create([
             'nombre' => 'Monkycoins',
             'descripcion' => 'Pensando en Grande',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_batman_hero_comic-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_batman_hero_comic-512.png',
+            'visible' => true
         ]);
         Equipo::create([
             'nombre' => 'Cuentaseguro',
             'descripcion' => 'Buscamos tu Seguridad',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_flash_hero_comic-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_flash_hero_comic-512.png',
+            'visible' => true
         ]);
         Equipo::create([
             'nombre' => 'Designerstyle',
             'descripcion' => 'Ideas hechas Arte',
             'disciplina_id' => $disciplinaId,
-            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_ironman_comic_hero-512.png'
+            'image' => 'https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_ironman_comic_hero-512.png',
+            'visible' => true
         ]);
     }
 }

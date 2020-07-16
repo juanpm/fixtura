@@ -17,16 +17,20 @@ class EquipoController extends Controller
     {
         //
         //$result = array();
-        $data = Equipo::all();
-        /*foreach ($data as $d) {
-            $disciplina = Disciplina::find($d->disciplina_id);
-            array_push($result, array(
-                "disciplina" => $disciplina, 
-                "equipo" => $d             
-            ));
-        }*/
+        $data = Equipo::where("visible", true)->get();
+        $compilado = array();
+        foreach($data as $item) {
+            $xrow = array(
+                "id" => $item->id,
+                "nombre" => $item->nombre,
+                "disciplina" => Disciplina::find($item->disciplina_id),
+                "descripcion" => $item->descripcion,
+                "image" => $item->image
+            );
+            array_push($compilado, $xrow);
+        }
         
-        return response()->json(array("status" => true, "objects" => $data));
+        return response()->json(array("status" => true, "objects" => $compilado));
     }
 
     /**
@@ -47,7 +51,31 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Log::channel('stderr')->info('test 1');
+
+        //Aqui se capturan datos
+        $nombre = $request->input("nombre");
+        $disciplina_id = $request->input("disciplina_id");
+        $descripcion = $request->input("descripcion");
+        $image = $request->input("image");
+        //Se crea el objeto para la base de datos
+        //Log::channel('stderr')->info('test 2');
+
+        $equipo_object = new Equipo;
+        $equipo_object->nombre = $nombre;
+        $equipo_object->disciplina_id = $disciplina_id;
+        $equipo_object->descripcion = $descripcion;
+        $equipo_object->image = $image;
+        $equipo_object->visible = true;
+        //Se guarda en la base de datos
+        $equipo_object->save();
+        //Log::channel('stderr')->info('test 3');
+
+        //Se responde
+        return response()->json([
+            "status" => true,
+            "object" => $equipo_object
+        ]);
     }
 
     /**
@@ -58,11 +86,11 @@ class EquipoController extends Controller
      */
     public function show(Equipo $equipo)
     {
-        $data = Equipo::find($equipo);
+         //$data = Equipo::find($equipo);
         
-        return response()->json([
+         return response()->json([
             "status" => true, 
-            "object" => $data[0]
+            "object" => $equipo
         ]);
     }
 
@@ -87,6 +115,14 @@ class EquipoController extends Controller
     public function update(Request $request, Equipo $equipo)
     {
         //
+        $equipo->nombre = $request->input("nombre");
+          $equipo->disciplina_id = $request->input("disciplina_id");
+          $equipo->descripcion = $request->input("descripcion");
+          $equipo->image = $request->input("image");
+          //$competidorequipo->visible = $request->true;
+          $equipo->update();
+          return response()->json(array("status" => true,
+          "object" =>$equipo));
     }
 
     /**
@@ -98,5 +134,7 @@ class EquipoController extends Controller
     public function destroy(Equipo $equipo)
     {
         //
+        $equipo->visible = false;
+        $equipo->update();
     }
 }

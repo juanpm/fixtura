@@ -18,21 +18,25 @@ class DisciplinaSeeder extends Seeder
             'nombre' => 'Futbol 8',
             'participantes' => 16,
             'olimpiada_id' => $olimpiadaId,
+            'visible' => true
         ]);
         Disciplina::create([
             'nombre' => 'Voley',
             'participantes' => 12,
-            'olimpiada_id' => $olimpiadaId
+            'olimpiada_id' => $olimpiadaId,
+            'visible' => true
         ]);
         Disciplina::create([
             'nombre' => 'Basquet',
             'participantes' => 10,
-            'olimpiada_id' => $olimpiadaId
+            'olimpiada_id' => $olimpiadaId,
+            'visible' => true
         ]);
         Disciplina::create([
             'nombre' => 'Futsal',
             'participantes' => 10,
-            'olimpiada_id' => $olimpiadaId
+            'olimpiada_id' => $olimpiadaId,
+            'visible' => true
         ]);
     }
 }

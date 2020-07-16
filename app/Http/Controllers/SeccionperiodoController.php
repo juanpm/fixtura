@@ -58,11 +58,11 @@ class SeccionperiodoController extends Controller
      */
     public function show(Seccionperiodo $seccionperiodo)
     {
-        $data = Seccionperiodo::find($seccionperiodo);
+        //$data = Seccionperiodo::find($seccionperiodo);
         
         return response()->json([
             "status" => true, 
-            "object" => $data[0]
+            "object" => $seccionperiodo
         ]);
     }
 

@@ -20,6 +20,7 @@ class CreateEquiposTable extends Migration
             $table->string('image', 300)->nullable();
             $table->integer('disciplina_id')->unsigned();
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
+            $table->boolean("visible");
             $table->timestamps();
         });
     }

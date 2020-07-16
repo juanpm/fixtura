@@ -58,11 +58,11 @@ class CarreraController extends Controller
      */
     public function show(Carrera $carrera)
     {
-        $data = Carrera::find($carrera);
+        //$data = Carrera::find($carrera);
         
         return response()->json([
             "status" => true, 
-            "object" => $data[0]
+            "object" => $carrera
         ]);
     }
 

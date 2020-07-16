@@ -21,6 +21,7 @@ class CreateMatriculasTable extends Migration
             $table->foreign('carrera_id')->references('id')->on('carreras'); 
             $table->unsignedInteger('seccionperiodo_id')->unsigned();
             $table->foreign('seccionperiodo_id')->references('id')->on('seccionperiodos');
+            $table->boolean("visible");
             $table->timestamps();
         });
     }

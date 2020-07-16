@@ -21,19 +21,23 @@ class CompetidorequipoSeeder extends Seeder
         $equipoId = Equipo::where('nombre', 'Anonymous',)->value('id');
         Competidorequipo::create([
             'matricula_id' => $matriculaId1,
-            'equipo_id' => $equipoId
+            'equipo_id' => $equipoId,
+            'visible' => true
         ]);
         Competidorequipo::create([
             'matricula_id' => $matriculaId2,
-            'equipo_id' => $equipoId
+            'equipo_id' => $equipoId,
+            'visible' => true
         ]);
         Competidorequipo::create([
             'matricula_id' => $matriculaId3,
-            'equipo_id' => $equipoId
+            'equipo_id' => $equipoId,
+            'visible' => true
         ]);
         Competidorequipo::create([
             'matricula_id' => $matriculaId4,
-            'equipo_id' => $equipoId
+            'equipo_id' => $equipoId,
+            'visible' => true
         ]);
     }
 }

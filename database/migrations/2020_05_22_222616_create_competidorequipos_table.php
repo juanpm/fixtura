@@ -19,6 +19,7 @@ class CreateCompetidorequiposTable extends Migration
             $table->foreign('matricula_id')->references('id')->on('matriculas');
             $table->unsignedInteger('equipo_id')->unsigned();
             $table->foreign('equipo_id')->references('id')->on('equipos');
+            $table->boolean("visible");
             $table->timestamps();
         });
     }
