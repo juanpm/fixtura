@@ -14,6 +14,7 @@ class SeccionperiodoSeeder extends Seeder
     {
         Seccionperiodo::create([
             'nombre' => 'C06AN1-2020-2',
+            'visible' => true
         ]);
     }
 }

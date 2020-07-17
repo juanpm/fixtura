@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disciplina;
-use App\Persona;
+use App\Olimpiada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

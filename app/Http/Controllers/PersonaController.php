@@ -31,7 +31,7 @@ class PersonaController extends Controller
         } 
         
         return response()->json(array("status" => true, "objects" => $result));*/
-        $data = Persona::all();
+        $data = Persona::where("visible", true)->get();
         
         return response()->json(array("status" => true, "objects" => $data));
     }
@@ -69,6 +69,7 @@ class PersonaController extends Controller
         $telefono = $request->input("telefono");
         $foto = $request->input("foto");
         $user_id = $request->input("user_id");
+        
    
         $persona_object = new Persona;
         $persona_object->codigo = $codigo;
@@ -78,6 +79,7 @@ class PersonaController extends Controller
         $persona_object->telefono = $telefono;
         $persona_object->foto = $foto;
         $persona_object->user_id = $user_id;
+        $persona_object->visible = true;
         $persona_object->save();
  
         return response()->json([
@@ -144,6 +146,7 @@ class PersonaController extends Controller
     public function destroy(Persona $persona)
     {
         //
-        $persona->delete();
+        $persona->visible = false;
+        $persona->update();
     }
 }

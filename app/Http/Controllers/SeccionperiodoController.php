@@ -15,7 +15,7 @@ class SeccionperiodoController extends Controller
     public function index()
     {
         //
-        $data = Seccionperiodo::all();
+        $data = Seccionperiodo::where("visible", true)->get();
         
         return response()->json(array("status" => true, "objects" => $data));
     }
@@ -42,6 +42,7 @@ class SeccionperiodoController extends Controller
    
         $seccion_object = new Seccionperiodo;
         $seccion_object->nombre = $nombre;
+        $seccion_object->visible = true;
         $seccion_object->save();
  
         return response()->json([
@@ -84,7 +85,7 @@ class SeccionperiodoController extends Controller
      * @param  \App\Seccionperiodo  $seccionperiodo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Seccionperiodo $seccionperiodo)
     {
         $seccionperiodo->nombre = $request->input("nombre");
         $seccionperiodo->update();
@@ -101,6 +102,7 @@ class SeccionperiodoController extends Controller
     public function destroy(Seccionperiodo $seccionperiodo)
     {
         //
-        $seccionperiodo->delete();
+        $seccionperiodo->visible = false;
+        $seccionperiodo->update();
     }
 }

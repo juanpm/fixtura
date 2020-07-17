@@ -16,6 +16,7 @@ class CreateSeccionperiodosTable extends Migration
         Schema::create('seccionperiodos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 250);
+            $table->boolean("visible"); 
             $table->timestamps();
         });
     }
