@@ -13,6 +13,7 @@ class CreateDesafiosTable extends Migration
      */
     public function up()
     {
+        ///////////////////En aqui se declaran los campos que tendran nuestras tablas//////////
         Schema::create('desafios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('disciplina_id')->unsigned();
@@ -30,6 +31,7 @@ class CreateDesafiosTable extends Migration
             $table->boolean("visible");
             $table->timestamps();
         });
+        /////////////////////////////////////////////////////////////////////////////////////////
     }
 
     /**

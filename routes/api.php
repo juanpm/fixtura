@@ -36,7 +36,7 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    
+    //////////////En aqui se definen las rutas para cad tabla///////////////////
     Route::apiResource('olimpiadas', 'OlimpiadaController');
     Route::apiResource('carreras', 'CarreraController');
     Route::apiResource('seccionperiodos', 'SeccionperiodoController');
@@ -51,4 +51,6 @@ Route::group([
     Route::apiResource('rols', 'RolController');
     Route::apiResource('usuariorols', 'UsuariorolController');
     Route::apiResource('matriculas', 'MatriculaController');
+    Route::apiResource('competidorequipos', 'CompetidorequipoController');
+    ///////////////////////////////////////////////////////////////////////////
 });

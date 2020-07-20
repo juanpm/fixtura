@@ -24,7 +24,6 @@ class CompetidorequipoController extends Controller
             $xrow = array(
                 "id" => $item->id,
                 "matricula" => Matricula::find($item->matricula_id),
-                "persona" => Matricula::find($item->persona_id),
                 "equipo" => Equipo::find($item->equipo_id)
             );
             array_push($compilado, $xrow);
@@ -73,7 +72,7 @@ class CompetidorequipoController extends Controller
      * @param  \App\Competidorequipo  $competidorequipo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Competidorequipo $competidorequipo)
     {
        //$equipo_id = Equipo::find($id);
         //$data = Competidorequipo::all();

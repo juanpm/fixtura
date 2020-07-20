@@ -45,13 +45,15 @@ class DesafioController extends Controller
             ));
         } 
         return response()->json(array("status" => true, "objects" => $result));*/
-        $data = Desafio::where("visible", true)->get();
+        $data = Desafio::where("visible", true)->get(); // en aqui se dice que muestre los datos que tienen
+        //el campo visible con valor true
+        ////////////////////////////////////////////////////////////////////////
         $compilado = array();
         foreach($data as $item) {
             $xrow = array(
                 "id" => $item->id,
-                "disciplina" => Disciplina::find($item->disciplina_id),
-                "invitado" => Equipo::find($item->invitado_id),
+                "disciplina" => Disciplina::find($item->disciplina_id),//en aqui se traen los datos de disciplina
+                "invitado" => Equipo::find($item->invitado_id),//en aqui se traen los datos de la tabla equipo
                 "retador" => Equipo::find($item->retador_id),
                 "invitado_puntaje" => $item->invitado_puntaje,
                 "retador_puntaje" => $item->retador_puntaje,
@@ -60,7 +62,9 @@ class DesafioController extends Controller
             array_push($compilado, $xrow);
         }
 
-        return response()->json(array("status" => true, "objects" => $compilado));
+        return response()->json(array("status" => true, "objects" => $compilado));// en aqui se dice que se traigan los datos
+        //del array compilado y mostrarlos
+
     }
 
     /**
@@ -81,6 +85,7 @@ class DesafioController extends Controller
      */
     public function store(Request $request)
     {
+        //En aqui definimos los campos que se van insertar en la base de datos
         $disciplina_id = $request->input("disciplina_id");
         $invitado_id = $request->input("invitado_id");
         $retador_id = $request->input("retador_id");
@@ -118,6 +123,8 @@ class DesafioController extends Controller
      */
     public function show(Desafio $desafio)
     {
+        //Esto nos permite ver los datos de manera individual
+        //con el id
         return response()->json([
             "status" => true, 
             "object" => $desafio
@@ -144,7 +151,8 @@ class DesafioController extends Controller
      */
     public function update(Request $request, Desafio $desafio)
     {
-        //
+        //Es el metodo de actualizar y se colocan los campos que se van a 
+        //actualizar 
         $desafio->disciplina_id = $request->input("disciplina_id");
         $desafio->invitado_id = $request->input("invitado_id");
         $desafio->retador_id = $request->input("retador_id");
@@ -168,7 +176,8 @@ class DesafioController extends Controller
      */
     public function destroy(Desafio $desafio)
     {
-        //
+        //Este es metodo de elimnar en donde se esta colocando la funcion
+        //de ocultar en el campo visible
         $desafio->visible = false;
         $desafio->update();
     }
